@@ -172,7 +172,8 @@ PRODUCT_PACKAGES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    keystore.msm8994
+    keystore.msm8994 \
+    gatekeeper.msm8994
 
 # Media
 PRODUCT_COPY_FILES += \
