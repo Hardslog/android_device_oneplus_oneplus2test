@@ -14,8 +14,21 @@
 
 $(call inherit-product, device/oneplus/oneplus2/full_oneplus2.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit some common omni stuff.
+$(call inherit-product, vendor/zombi/config/common.mk)
 
 # Inherit oneplus2-specific vendor tree
 $(call inherit-product-if-exists, vendor/oneplus/oneplus2/oneplus2-vendor.mk)
+
+
+# Get the prebuilt list of APNs
+$(call inherit-product, vendor/zombi/config/gsm.mk)
+
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
+PRODUCT_NAME := zombi_oneplus2
+PRODUCT_DEVICE := oneplus2
+PRODUCT_BRAND := oneplus
+PRODUCT_MODEL := oneplus2
+PRODUCT_MANUFACTURER := oneplus
