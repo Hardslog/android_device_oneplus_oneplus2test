@@ -8,7 +8,8 @@ LOCAL_SRC_FILES := \
 LOCAL_CFLAGS += \
 	-Wall
 
-LOCAL_MODULE := dtbToolOP2
+LOCAL_MODULE := dtbTool.oneplus.msm8994
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_HOST_EXECUTABLE)
+
