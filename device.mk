@@ -174,13 +174,7 @@ PRODUCT_COPY_FILES += \
 # Keyhandler
 PRODUCT_PACKAGES += \
     ConfigPanel \
-    OnePlusControl \
-    com.cyanogenmod.keyhandler
-
-PRODUCT_SYSTEM_SERVER_JARS += com.cyanogenmod.keyhandler
-
-# never dexopt the keyhandler
-$(call add-product-dex-preopt-module-config,com.cyanogenmod.keyhandler,disable)
+    OnePlusControl 
 
 # Keymaster
 PRODUCT_PACKAGES += \
@@ -214,10 +208,10 @@ PRODUCT_PACKAGES += \
     libOmxVdecHevc \
     libOmxVenc \
     libOmxVidcCommon \
-    libqcmediaplayer \
-    libstagefrighthw \
-    libstagefright_soft_flacdec \
-    qcmediaplayer
+    libstagefright_soft_flacdec 
+
+PRODUCT_BOOT_JARS += \
+     libstagefrighthw
 
 # Power
 PRODUCT_PACKAGES += \
