@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Inherit 64-bit configs
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+
 $(call inherit-product, device/oneplus/oneplus2/full_oneplus2.mk)
 
 # Inherit some common omni stuff.
