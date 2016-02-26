@@ -210,7 +210,7 @@ PRODUCT_BOOT_JARS += \
 
 # Power
 PRODUCT_PACKAGES += \
-    power.msm8992
+    power.msm8994
 
 # QMI
 PRODUCT_PACKAGES += \
