@@ -1,4 +1,6 @@
 # Copyright (C) 2015 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2017 the OmniRom Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,7 +24,7 @@
 
 TARGET_OTA_ASSERT_DEVICE := OnePlus2,oneplus2
 
-BOARD_VENDOR := oneplus
+BOARD_PATH := device/oneplus/oneplus2
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8994
@@ -31,7 +33,6 @@ TARGET_NO_BOOTLOADER := true
 # Platform
 TARGET_BOARD_PLATFORM := msm8994
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno430
-TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -48,11 +49,13 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 
 TARGET_CPU_CORTEX_A53 := true
 
-TARGET_BOARD_SUFFIX := _64
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_USES_64_BIT_BINDER := true
 
+ENABLE_CPUSETS := true
+
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-5 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-5 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DT := true
@@ -63,15 +66,13 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 BOARD_MKBOOTIMG_ARGS := --tags_offset 0x00000100
 BOARD_CUSTOM_BOOTIMG_MK := device/oneplus/oneplus2/mkbootimg.mk
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8994
-TARGET_KERNEL_CONFIG := cm_oneplus2_defconfig
+TARGET_KERNEL_CONFIG := oneplus2_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_USES_UNCOMPRESSED_KERNEL := true
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_USES_QCOM_BSP := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP -DQCOM_MEDIA_DISABLE_BUFFER_SIZE_CHECK -DSNDRV_COMPRESS_SET_NEXT_TRACK_PARAM
-
 
 # ANT+
 # BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
@@ -106,7 +107,7 @@ QCOM_BT_USE_BTNV := true
 QCOM_BT_USE_SMD_TTY := true
 
 # Camera
-USE_DEVICE_SPECIFIC_CAMERA := true
+USE_CAMERA_STUB := true
 
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
@@ -138,20 +139,11 @@ OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := device/oneplus/oneplus2/include
 
-# Init
-TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
-TARGET_LIBINIT_DEFINES_FILE := device/oneplus/oneplus2/init/init_oneplus2.cpp
-
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
 
 # Power
 TARGET_POWERHAL_VARIANT := qcom
-
-# RIL
-TARGET_RIL_VARIANT := caf
 
 # RPC
 TARGET_NO_RPC := true
@@ -193,17 +185,10 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_RECOVERY_FSTAB := device/oneplus/oneplus2/rootdir/etc/fstab.qcom
 
 # SELinux
-include device/qcom/caf-sepolicy/sepolicy.mk
+include device/qcom/sepolicy/sepolicy.mk
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
-
-# CM Hardware
-BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS += \
-    device/oneplus/oneplus2/cmhw \
-    hardware/cyanogen/cmhw
-TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 
 # inherit from the proprietary version
 -include vendor/oneplus/oneplus2/BoardConfigVendor.mk
